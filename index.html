@@ -751,8 +751,23 @@
   }
 
   /* ─── SLIDE 10 image heights ─── */
-  .two-big-imgs { max-height: 58%; }
-  .big-img-wrap img { height: 240px; }
+  .two-big-imgs { max-height: 70%; }
+  .big-img-wrap img { height: 340px; }
+
+  /* ─── SLIDE 4 intro image ─── */
+  .s4-intro-img {
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 52%;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .s4-intro-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.85;
+  }
 
 </style>
 </head>
@@ -868,8 +883,11 @@
   <div class="slide" id="s4">
     <div class="top-bar green"></div>
     <div class="hero-side-line green"></div>
-    <div class="hero-bg" style="background-image: url('assets/slide-04.jpg');"></div>
+    <div class="hero-bg" style="background-image: url('assets/slide-04.jpg'); opacity: 0.3;"></div>
     <div class="hero-overlay-left"></div>
+    <div class="s4-intro-img">
+      <img src="assets/img_slide04_uvod.png" alt="Arcade Perfect Break intro">
+    </div>
     <div class="hero-content">
       <div class="hero-body">
         <div class="hero-label green">Koncept 01</div>
@@ -917,7 +935,7 @@
         </div>
         <div class="frame-item">
           <div class="frame-img">
-            <img src="assets/posterImage-525.png" alt="Full Energy" onerror="this.style.background='#1c2a10';this.style.display='block';this.style.height='100%'">
+            <img src="assets/img_full_energy.png" alt="Full Energy" onerror="this.style.background='#1c2a10';this.style.display='block';this.style.height='100%'">
           </div>
           <div class="frame-label">FULL ENERGY</div>
           <div class="frame-text">Perfect Break obnoví životy a vrátí hrdinu do reality.</div>
@@ -962,7 +980,7 @@
           </div>
         </div>
         <div class="right-img">
-          <img src="assets/posterImage-525.png" alt="Arcade Perfect Break" onerror="this.parentElement.style.background='#1c2a10'">
+          <img src="assets/img_perfect_break_pixel.png" alt="Arcade Perfect Break" onerror="this.parentElement.style.background='#1c2a10'">
         </div>
       </div>
     </div>
@@ -976,6 +994,7 @@
     <div class="video-frame video-border-green">
       <video autoplay muted loop playsinline>
         <source src="assets/delikomat_video01_V2-540.mp4" type="video/mp4">
+        <source src="assets/input-delikomat_video01_V2---45c8e4a6-cb98-4c7f-9a6e-f57a61fa4243.mov" type="video/quicktime">
       </video>
     </div>
   </div>
@@ -1069,14 +1088,27 @@
   </div>
 
   <!-- ═══════════════════════════════════════════
-       SLIDE 11 — VIDEO 02 (DELIKOMAN)
+       SLIDE 11 — VIDEO ÚVOD (DELIKOMAN)
   ═══════════════════════════════════════════ -->
   <div class="slide video-slide" id="s11">
     <div class="top-bar orange"></div>
     <div class="video-frame video-border-orange">
       <video autoplay muted loop playsinline>
-        <source src="assets/Delikoman.mp4-541.mov" type="video/quicktime">
-        <source src="assets/Delikoman.mp4-541.mov" type="video/mp4">
+        <source src="assets/UVOD_kopie.mov" type="video/quicktime">
+        <source src="assets/UVOD_kopie.mov" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SLIDE 11b — VIDEO DELIKOMAN (kopie)
+  ═══════════════════════════════════════════ -->
+  <div class="slide video-slide" id="s11b">
+    <div class="top-bar orange"></div>
+    <div class="video-frame video-border-orange">
+      <video autoplay muted loop playsinline>
+        <source src="assets/Delikoman_kopie.mov" type="video/quicktime">
+        <source src="assets/Delikoman_kopie.mov" type="video/mp4">
       </video>
     </div>
   </div>
@@ -1196,6 +1228,7 @@
     <div class="video-frame video-border-cyan">
       <video autoplay muted loop playsinline>
         <source src="assets/delikomat_video03_V3-537.mp4" type="video/mp4">
+        <source src="assets/input-delikomat_video03_V3---d5b78e32-c307-4b2e-ae9a-4d7bac39213f.mov" type="video/quicktime">
       </video>
     </div>
   </div>
