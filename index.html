@@ -44,7 +44,7 @@ h1 { font-size: clamp(26px, 3.2vw, 50px); font-weight: 700; line-height: 1.15; c
 .s1-bg { position: absolute; inset: 0; display: flex; }
 .s1-col { flex: 1; background-size: cover; background-position: center; }
 .s1-col:nth-child(1) { background-image: url('assets/s1_col1.png'); background-position: left center; opacity: 1; }
-.s1-col:nth-child(2) { background-image: url('assets/s1_col2.jpg'); opacity: 1; }
+.s1-col:nth-child(2) { background-image: url('assets/s1_col2.jpg'); background-position: center center; opacity: 1; }
 .s1-col:nth-child(3) { background-image: url('assets/s1_col3.png'); background-position: center center; opacity: 1; }
 .s1-ov { position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,9,8,.95) 30%, rgba(10,9,8,.4) 60%, rgba(10,9,8,.7)); }
 .s1-wrap { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; padding: 0 52px; }
@@ -90,7 +90,9 @@ h1 { font-size: clamp(26px, 3.2vw, 50px); font-weight: 700; line-height: 1.15; c
 .frames { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; margin-top: 20px; flex: 1; min-height: 0; }
 .frame { display: flex; flex-direction: column; gap: 8px; min-height: 0; }
 .frame-img { flex: 1; border-radius: 8px; overflow: hidden; background: #111; min-height: 0; }
-.frame-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.frame-img img { width: 100%; height: 100%; object-fit: cover; display: block; object-position: center; }
+.frame:nth-child(1) .frame-img img { object-position: left center; }
+.frame:nth-child(2) .frame-img img { object-position: right center; }
 .flabel { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--green); }
 .ftext  { font-size: 12px; color: var(--dim); line-height: 1.5; }
 
