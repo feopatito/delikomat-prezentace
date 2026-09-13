@@ -7,7 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
   --green:  #7EC620;
   --orange: #E8650A;
@@ -17,76 +16,30 @@
   --dim:    rgba(255,255,255,0.65);
   --muted:  rgba(255,255,255,0.4);
 }
-
-html, body {
-  width: 100%; height: 100%;
-  background: #0d0b0a;
-  font-family: 'Inter', system-ui, sans-serif;
-  overflow: hidden;
-  color: var(--white);
-}
-
-/* ── SLIDESHOW ── */
-.deck {
-  position: relative;
-  width: 100vw; height: 100vh;
-}
-.slide {
-  position: absolute; inset: 0;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.5s ease;
-  background: var(--bg);
-  display: flex; flex-direction: column;
-  overflow: hidden;
-}
+html, body { width: 100%; height: 100%; background: #0d0b0a; font-family: 'Inter', system-ui, sans-serif; overflow: hidden; color: var(--white); }
+.deck { position: relative; width: 100vw; height: 100vh; }
+.slide { position: absolute; inset: 0; opacity: 0; pointer-events: none; transition: opacity 0.5s ease; background: var(--bg); display: flex; flex-direction: column; overflow: hidden; }
 .slide.active { opacity: 1; pointer-events: all; }
-
-/* ── SHARED ── */
 .bar { height: 5px; width: 100%; flex-shrink: 0; }
 .bar-green  { background: var(--green); }
 .bar-orange { background: var(--orange); }
 .bar-cyan   { background: var(--cyan); }
-
-.hdr {
-  display: flex; justify-content: space-between; align-items: flex-start;
-  padding: 22px 52px 0; flex-shrink: 0;
-}
-.label {
-  font-size: 11px; font-weight: 700;
-  letter-spacing: .15em; text-transform: uppercase;
-}
+.hdr { display: flex; justify-content: space-between; align-items: flex-start; padding: 22px 52px 0; flex-shrink: 0; }
+.label { font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
 .label-green  { color: var(--green); }
 .label-orange { color: var(--orange); }
 .label-cyan   { color: var(--cyan); }
 .bc { font-size: 11px; font-weight: 500; letter-spacing: .1em; color: var(--muted); text-transform: uppercase; }
-
 .body { flex: 1; padding: 28px 52px 70px; display: flex; flex-direction: column; overflow: hidden; }
-
 h1 { font-size: clamp(26px, 3.2vw, 50px); font-weight: 700; line-height: 1.15; color: var(--white); margin-bottom: 12px; }
-h1.huge { font-size: clamp(38px, 6vw, 88px); font-weight: 900; text-transform: uppercase; line-height: 1; letter-spacing: -.02em; }
 .sub { font-size: clamp(13px, 1.2vw, 17px); color: var(--dim); line-height: 1.6; max-width: 780px; }
-
-/* ── NAV ── */
-.nav {
-  position: fixed; bottom: 0; left: 0; right: 0;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 14px 32px 18px; z-index: 200; pointer-events: none;
-}
-.nav-btn {
-  pointer-events: all;
-  width: 42px; height: 42px; border-radius: 50%;
-  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14);
-  color: white; font-size: 17px; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: background .2s, border-color .2s; backdrop-filter: blur(8px);
-}
+.nav { position: fixed; bottom: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 14px 32px 18px; z-index: 200; pointer-events: none; }
+.nav-btn { pointer-events: all; width: 42px; height: 42px; border-radius: 50%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: white; font-size: 17px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .2s, border-color .2s; backdrop-filter: blur(8px); }
 .nav-btn:hover { background: rgba(232,101,10,.3); border-color: var(--orange); }
 .nav-btn:disabled { opacity: .2; cursor: default; }
 .ctr { font-size: 11px; font-weight: 600; letter-spacing: .1em; color: var(--muted); pointer-events: none; }
 
-/* ─────────────────────────────────────────
-   S1 — TITULNÍ
-───────────────────────────────────────── */
+/* S1 */
 #s1 { background: #0a0908; }
 .s1-bg { position: absolute; inset: 0; display: flex; }
 .s1-col { flex: 1; background-size: cover; background-position: center; }
@@ -100,29 +53,19 @@ h1.huge { font-size: clamp(38px, 6vw, 88px); font-weight: 900; text-transform: u
 .s1-title { font-size: clamp(44px, 7.5vw, 112px); font-weight: 900; line-height: .93; text-transform: uppercase; letter-spacing: -.02em; color: white; margin-bottom: 24px; max-width: 680px; }
 .s1-sub { font-size: clamp(14px, 1.3vw, 18px); color: rgba(255,255,255,.72); max-width: 560px; line-height: 1.55; }
 .s1-tags { padding-bottom: 48px; font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
-.t-g { color: var(--green); }
-.t-o { color: var(--orange); }
-.t-c { color: var(--cyan); }
+.t-g { color: var(--green); } .t-o { color: var(--orange); } .t-c { color: var(--cyan); }
 .dot { color: rgba(255,255,255,.25); margin: 0 10px; }
 
-/* ─────────────────────────────────────────
-   S2 — NÁŠ PŘÍSTUP
-───────────────────────────────────────── */
+/* S2 */
 .cols3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; margin: 28px 0 auto; }
 .col .num { font-size: 22px; font-weight: 800; color: var(--orange); margin-bottom: 6px; }
 .col .ctitle { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
 .col .ctext { font-size: 13px; color: var(--dim); line-height: 1.6; }
-.bbox {
-  border: 1.5px solid var(--orange); border-radius: 10px;
-  padding: 20px 28px; background: rgba(232,101,10,.05);
-  display: flex; gap: 40px; align-items: center; margin-top: 24px;
-}
+.bbox { border: 1.5px solid var(--orange); border-radius: 10px; padding: 20px 28px; background: rgba(232,101,10,.05); display: flex; gap: 40px; align-items: center; margin-top: 24px; }
 .bbox .blabel { font-size: 14px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
 .bbox .btext { font-size: 14px; color: var(--dim); line-height: 1.55; }
 
-/* ─────────────────────────────────────────
-   S3 — TŘI KONCEPTY
-───────────────────────────────────────── */
+/* S3 */
 .ccols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 36px; margin-top: 28px; flex: 1; }
 .cc .cnum { font-size: clamp(38px, 5vw, 68px); font-weight: 900; line-height: 1; margin-bottom: 10px; }
 .cc .cname { font-size: 15px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; }
@@ -130,16 +73,9 @@ h1.huge { font-size: clamp(38px, 6vw, 88px); font-weight: 900; text-transform: u
 .cc .cdesc { font-size: 14px; color: var(--dim); line-height: 1.6; margin-bottom: 16px; }
 .cc .ctag  { font-size: 13px; color: var(--muted); }
 
-/* ─────────────────────────────────────────
-   S4 — KONCEPT 01 HERO (fullscreen arkáda)
-───────────────────────────────────────── */
+/* S4 */
 #s4 { background: #080806; }
-.s4-bg {
-  position: absolute; inset: 0;
-  background-image: url('assets/slide-04.jpg');
-  background-size: cover; background-position: center;
-  opacity: .9;
-}
+.s4-bg { position: absolute; inset: 0; background-image: url('assets/slide-04.jpg'); background-size: cover; background-position: center; opacity: .9; }
 .s4-ov { position: absolute; inset: 0; background: linear-gradient(to right, rgba(8,8,6,.85) 0%, rgba(8,8,6,.5) 45%, rgba(8,8,6,.1) 70%); }
 .s4-side { position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--green); z-index: 3; }
 .s4-content { position: relative; z-index: 4; display: flex; flex-direction: column; height: 100%; padding: 0 52px; }
@@ -150,9 +86,7 @@ h1.huge { font-size: clamp(38px, 6vw, 88px); font-weight: 900; text-transform: u
 .s4-sub { font-size: clamp(14px, 1.2vw, 17px); color: rgba(255,255,255,.78); line-height: 1.6; margin-bottom: 28px; }
 .s4-cta { display: inline-block; border: 1.5px solid var(--green); border-radius: 8px; padding: 14px 24px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--green); background: rgba(126,198,32,.07); }
 
-/* ─────────────────────────────────────────
-   S5 — KONCEPT 01 DETAIL (4 panely)
-───────────────────────────────────────── */
+/* S5 — 4 panely */
 .frames { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; margin-top: 20px; flex: 1; min-height: 0; }
 .frame { display: flex; flex-direction: column; gap: 8px; min-height: 0; }
 .frame-img { flex: 1; border-radius: 8px; overflow: hidden; background: #111; min-height: 0; }
@@ -160,9 +94,7 @@ h1.huge { font-size: clamp(38px, 6vw, 88px); font-weight: 900; text-transform: u
 .flabel { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--green); }
 .ftext  { font-size: 12px; color: var(--dim); line-height: 1.5; }
 
-/* ─────────────────────────────────────────
-   S6 — KONCEPT 01 ARGUMENTY
-───────────────────────────────────────── */
+/* S6 */
 .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; flex: 1; align-items: center; margin-top: 20px; }
 .points { display: flex; flex-direction: column; gap: 24px; }
 .pt { display: flex; gap: 18px; align-items: flex-start; }
@@ -178,19 +110,9 @@ h1.huge { font-size: clamp(38px, 6vw, 88px); font-weight: 900; text-transform: u
 .rimg-cyan   { border-color: var(--cyan); }
 .rimg img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-/* ─────────────────────────────────────────
-   VIDEO SLIDES
-───────────────────────────────────────── */
-.vslide {
-  background: #060504;
-  align-items: center; justify-content: center;
-  position: relative;
-}
-.vwrap {
-  position: relative;
-  width: 82%; max-width: 1080px;
-  border-radius: 10px; overflow: hidden;
-}
+/* VIDEO SLIDES — střed garantován */
+.vslide { background: #060504; display: flex !important; flex-direction: column; align-items: center; justify-content: center; }
+.vwrap { position: relative; width: 82%; max-width: 1080px; border-radius: 10px; overflow: hidden; flex-shrink: 0; }
 .vwrap::before { content: ''; display: block; padding-top: 56.25%; }
 .vwrap video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; background: #000; }
 .vborder-green  { border: 3px solid var(--green);  box-shadow: 0 0 40px rgba(126,198,32,.2); }
@@ -198,12 +120,10 @@ h1.huge { font-size: clamp(38px, 6vw, 88px); font-weight: 900; text-transform: u
 .vborder-cyan   { border: 3px solid var(--cyan);   box-shadow: 0 0 40px rgba(78,205,196,.2); }
 .vbar { position: absolute; top: 0; left: 0; right: 0; height: 5px; z-index: 10; }
 
-/* ─────────────────────────────────────────
-   S8 — KONCEPT 02 HERO (Delikoman)
-───────────────────────────────────────── */
-#s8 { background: #0d0906; }
-.hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center right; }
-.hero-ov-l { position: absolute; inset: 0; background: linear-gradient(to right, rgba(13,9,6,.92) 40%, rgba(13,9,6,.2) 70%, rgba(13,9,6,0)); }
+/* HERO SLIDES */
+.hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; z-index: 0; }
+.hero-black-ov { position: absolute; inset: 0; z-index: 1; }
+.hero-ov-l { position: absolute; inset: 0; background: linear-gradient(to right, rgba(13,9,6,.92) 40%, rgba(13,9,6,.2) 70%, rgba(13,9,6,0)); z-index: 2; }
 .hero-side { position: absolute; left: 0; top: 0; bottom: 0; width: 5px; z-index: 3; }
 .hero-side-o { background: var(--orange); }
 .hero-side-c { background: var(--cyan); }
@@ -217,27 +137,21 @@ h1.huge { font-size: clamp(38px, 6vw, 88px); font-weight: 900; text-transform: u
 .cta-orange { border-color: var(--orange); color: var(--orange); background: rgba(232,101,10,.07); }
 .cta-cyan   { border-color: var(--cyan);   color: var(--cyan);   background: rgba(78,205,196,.07); }
 
-/* ─────────────────────────────────────────
-   S9 — KONCEPT 02 DETAIL
-───────────────────────────────────────── */
+/* S9 */
 .s9lay { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; flex: 1; align-items: center; margin-top: 16px; }
 .qbox { background: rgba(255,255,255,.04); border: 1.5px solid rgba(255,255,255,.12); border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 14px; }
 .qmain { font-size: clamp(22px, 2.8vw, 34px); font-weight: 800; line-height: 1.2; }
 .qtext { font-size: 14px; color: var(--dim); line-height: 1.65; }
 .qtag  { font-size: 13px; color: var(--muted); margin-top: 6px; }
 
-/* ─────────────────────────────────────────
-   S10 — KONCEPT 02 UKÁZKY
-───────────────────────────────────────── */
+/* S10 */
 .bigimgs { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; flex: 1; margin-top: 20px; min-height: 0; }
 .biwrap { display: flex; flex-direction: column; gap: 10px; min-height: 0; }
 .biwrap img { flex: 1; width: 100%; min-height: 0; object-fit: cover; border-radius: 8px; display: block; }
 .bilabel { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); flex-shrink: 0; }
 .bnote { font-size: 13px; color: var(--muted); text-align: center; margin-top: 12px; flex-shrink: 0; }
 
-/* ─────────────────────────────────────────
-   S13 — KONCEPT 03 DETAIL
-───────────────────────────────────────── */
+/* S14 */
 .rows5 { display: flex; flex-direction: column; flex: 1; margin-top: 14px; justify-content: space-evenly; }
 .row5 { display: flex; align-items: flex-start; gap: 20px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.07); }
 .row5:last-child { border-bottom: none; }
@@ -246,16 +160,12 @@ h1.huge { font-size: clamp(38px, 6vw, 88px); font-weight: 900; text-transform: u
 .rtitle { font-size: 16px; font-weight: 700; min-width: 190px; flex-shrink: 0; }
 .rdesc  { font-size: 13px; color: var(--dim); line-height: 1.55; }
 
-/* ─────────────────────────────────────────
-   S16+ — SHRNUTÍ
-───────────────────────────────────────── */
+/* S17 */
 .sumrows { flex: 1; display: flex; flex-direction: column; margin-top: 24px; justify-content: center; }
 .sumrow { display: grid; grid-template-columns: 260px 1fr 1fr; gap: 0; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,.1); align-items: center; }
 .sumrow:first-child { border-top: 1px solid rgba(255,255,255,.1); }
 .sbrand { font-size: 14px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
-.sbrand-g { color: var(--green); }
-.sbrand-o { color: var(--orange); }
-.sbrand-c { color: var(--cyan); }
+.sbrand-g { color: var(--green); } .sbrand-o { color: var(--orange); } .sbrand-c { color: var(--cyan); }
 .scol { font-size: 14px; color: rgba(255,255,255,.68); padding: 0 16px; line-height: 1.5; }
 .scol2 { font-size: 13px; color: var(--muted); }
 .finbox { border: 1.5px solid var(--orange); border-radius: 10px; padding: 18px 26px; margin-top: 22px; background: rgba(232,101,10,.05); font-size: 15px; color: rgba(255,255,255,.75); line-height: 1.6; flex-shrink: 0; }
@@ -264,15 +174,9 @@ h1.huge { font-size: clamp(38px, 6vw, 88px); font-weight: 900; text-transform: u
 <body>
 <div class="deck" id="deck">
 
-<!-- ══════════════════════════════════════
-     S1 — TITULNÍ
-══════════════════════════════════════ -->
+<!-- S1 — TITULNÍ -->
 <div class="slide active" id="s1">
-  <div class="s1-bg">
-    <div class="s1-col"></div>
-    <div class="s1-col"></div>
-    <div class="s1-col"></div>
-  </div>
+  <div class="s1-bg"><div class="s1-col"></div><div class="s1-col"></div><div class="s1-col"></div></div>
   <div class="s1-ov"></div>
   <div class="s1-wrap">
     <div class="s1-bar"></div>
@@ -281,18 +185,14 @@ h1.huge { font-size: clamp(38px, 6vw, 88px); font-weight: 900; text-transform: u
       <div class="s1-sub">Koncepty videí pro obrazovky kávových automatů Delikomat</div>
     </div>
     <div class="s1-tags">
-      <span class="t-g">ARKÁDOVÁ HRA</span>
-      <span class="dot">•</span>
-      <span class="t-o">POZORNOSTNÍ KOMEDIE</span>
-      <span class="dot">•</span>
+      <span class="t-g">ARKÁDOVÁ HRA</span><span class="dot">•</span>
+      <span class="t-o">POZORNOSTNÍ KOMEDIE</span><span class="dot">•</span>
       <span class="t-c">VIRTUÁLNÍ ASISTENT</span>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     S2 — NÁŠ PŘÍSTUP
-══════════════════════════════════════ -->
+<!-- S2 — NÁŠ PŘÍSTUP -->
 <div class="slide" id="s2">
   <div class="bar bar-orange"></div>
   <div class="hdr"><span class="label label-orange">Náš přístup</span><span class="bc">DELIKOMAT / PERFECT BREAK</span></div>
@@ -311,52 +211,25 @@ h1.huge { font-size: clamp(38px, 6vw, 88px); font-weight: 900; text-transform: u
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     S3 — TŘI KONCEPTY
-══════════════════════════════════════ -->
+<!-- S3 — TŘI KONCEPTY -->
 <div class="slide" id="s3">
   <div class="bar bar-orange"></div>
   <div class="hdr"><span class="label label-orange">Tři koncepty</span><span class="bc">DELIKOMAT / PERFECT BREAK</span></div>
   <div class="body">
     <h1>Jedna message. Tři různé způsoby, jak ji podat.</h1>
     <div class="ccols">
-      <div class="cc">
-        <div class="cnum" style="color:var(--green)">01</div>
-        <div class="cname">ARCADE PERFECT BREAK</div>
-        <div class="cline" style="background:var(--green)"></div>
-        <div class="cdesc">Akce, nostalgie a herní mechanika</div>
-        <div class="ctag">Široký generační zásah</div>
-      </div>
-      <div class="cc">
-        <div class="cnum" style="color:var(--orange)">02</div>
-        <div class="cname">DELIKOMAN NA LEHÁTKU</div>
-        <div class="cline" style="background:var(--orange)"></div>
-        <div class="cdesc">Pozornostní komedie a situační humor</div>
-        <div class="ctag">Okamžité „co to kruci je?"</div>
-      </div>
-      <div class="cc">
-        <div class="cnum" style="color:var(--cyan)">03</div>
-        <div class="cname">DELIKOANDROID</div>
-        <div class="cline" style="background:var(--cyan)"></div>
-        <div class="cdesc">Virtuální asistent a pohyb časem</div>
-        <div class="ctag">Budoucnost se mění. Automat zůstává.</div>
-      </div>
+      <div class="cc"><div class="cnum" style="color:var(--green)">01</div><div class="cname">ARCADE PERFECT BREAK</div><div class="cline" style="background:var(--green)"></div><div class="cdesc">Akce, nostalgie a herní mechanika</div><div class="ctag">Široký generační zásah</div></div>
+      <div class="cc"><div class="cnum" style="color:var(--orange)">02</div><div class="cname">DELIKOMAN NA LEHÁTKU</div><div class="cline" style="background:var(--orange)"></div><div class="cdesc">Pozornostní komedie a situační humor</div><div class="ctag">Okamžité „co to kruci je?"</div></div>
+      <div class="cc"><div class="cnum" style="color:var(--cyan)">03</div><div class="cname">DELIKOANDROID</div><div class="cline" style="background:var(--cyan)"></div><div class="cdesc">Virtuální asistent a pohyb časem</div><div class="ctag">Budoucnost se mění. Automat zůstává.</div></div>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     S4 — KONCEPT 01 HERO (fullscreen arkáda)
-══════════════════════════════════════ -->
+<!-- S4 — KONCEPT 01 HERO -->
 <div class="slide" id="s4">
-  <div class="s4-bg"></div>
-  <div class="s4-ov"></div>
-  <div class="s4-side"></div>
+  <div class="s4-bg"></div><div class="s4-ov"></div><div class="s4-side"></div>
   <div class="s4-content">
-    <div class="s4-hdr">
-      <span class="label label-green">Koncept 01</span>
-      <span class="bc">DELIKOMAT / PERFECT BREAK</span>
-    </div>
+    <div class="s4-hdr"><span class="label label-green">Koncept 01</span><span class="bc">DELIKOMAT / PERFECT BREAK</span></div>
     <div class="s4-body">
       <div class="s4-label">Koncept 01</div>
       <div class="s4-title">ARCADE<br>PERFECT<br>BREAK</div>
@@ -366,9 +239,7 @@ h1.huge { font-size: clamp(38px, 6vw, 88px); font-weight: 900; text-transform: u
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     S5 — KONCEPT 01 DETAIL (4 panely)
-══════════════════════════════════════ -->
+<!-- S5 — KONCEPT 01 DETAIL — 4 panely za sebou -->
 <div class="slide" id="s5">
   <div class="bar bar-green"></div>
   <div class="hdr"><span class="label label-green">Koncept 01</span><span class="bc">DELIKOMAT / PERFECT BREAK</span></div>
@@ -400,9 +271,7 @@ h1.huge { font-size: clamp(38px, 6vw, 88px); font-weight: 900; text-transform: u
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     S6 — KONCEPT 01 ARGUMENTY
-══════════════════════════════════════ -->
+<!-- S6 — KONCEPT 01 ARGUMENTY -->
 <div class="slide" id="s6">
   <div class="bar bar-green"></div>
   <div class="hdr"><span class="label label-green">Koncept 01</span><span class="bc">DELIKOMAT / PERFECT BREAK</span></div>
@@ -410,51 +279,33 @@ h1.huge { font-size: clamp(38px, 6vw, 88px); font-weight: 900; text-transform: u
     <h1>Barevná arkáda mluví jazykem současné pozornosti.</h1>
     <div class="twocol">
       <div class="points">
-        <div class="pt">
-          <div class="pnum pnum-green">01</div>
-          <div><div class="ptitle">Napříč generacemi</div><div class="ptext">Mladší osloví dynamika a herní logika. Starší vtáhne nostalgie klasických plošinovek.</div></div>
-        </div>
-        <div class="pt">
-          <div class="pnum pnum-green">02</div>
-          <div><div class="ptitle">High-dopamine vizuál</div><div class="ptext">Syté barvy, rychlé útoky, HUD a proměnlivá prostředí obstojí v přehleceném okolí.</div></div>
-        </div>
-        <div class="pt">
-          <div class="pnum pnum-green">03</div>
-          <div><div class="ptitle">Silná zapamatovatelnost</div><div class="ptext">Opakující se hrdina, bossové a CTA tvoří vlastní rozpoznatelný svět značky.</div></div>
-        </div>
+        <div class="pt"><div class="pnum pnum-green">01</div><div><div class="ptitle">Napříč generacemi</div><div class="ptext">Mladší osloví dynamika a herní logika. Starší vtáhne nostalgie klasických plošinovek.</div></div></div>
+        <div class="pt"><div class="pnum pnum-green">02</div><div><div class="ptitle">High-dopamine vizuál</div><div class="ptext">Syté barvy, rychlé útoky, HUD a proměnlivá prostředí obstojí v přehleceném okolí.</div></div></div>
+        <div class="pt"><div class="pnum pnum-green">03</div><div><div class="ptitle">Silná zapamatovatelnost</div><div class="ptext">Opakující se hrdina, bossové a CTA tvoří vlastní rozpoznatelný svět značky.</div></div></div>
       </div>
-      <div class="rimg rimg-green">
-        <img src="assets/healed02-528.png" alt="Perfect Break">
-      </div>
+      <div class="rimg rimg-green"><img src="assets/healed02-528.png" alt="Perfect Break"></div>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     S7 — VIDEO ARCADE
-══════════════════════════════════════ -->
-<div class="slide vslide" id="s7" style="align-items:center;justify-content:center;">
+<!-- S7 — VIDEO ARCADE — střed -->
+<div class="slide vslide" id="s7">
   <div class="vbar bar-green"></div>
-  <div class="vwrap vborder-green" style="position:relative;left:50%;transform:translateX(-50%);">
+  <div class="vwrap vborder-green">
     <video muted loop playsinline>
       <source src="assets/delikomat_video01_V2-540.mp4" type="video/mp4">
     </video>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     S8 — KONCEPT 02 HERO (Delikoman)
-══════════════════════════════════════ -->
+<!-- S8 — KONCEPT 02 HERO — pozadí D-549.jpg + 20% černý overlay -->
 <div class="slide" id="s8">
   <div class="hero-bg" style="background-image:url('assets/D-549.jpg')"></div>
-  <div style="position:absolute;inset:0;background:rgba(0,0,0,0.20);z-index:1;"></div>
-  <div class="hero-ov-l" style="z-index:2;"></div>
-  <div class="hero-side hero-side-o" style="z-index:3;"></div>
-  <div class="hero-wrap" style="z-index:4;">
-    <div class="hero-hdr">
-      <span class="label label-orange">Koncept 02</span>
-      <span class="bc">DELIKOMAT / PERFECT BREAK</span>
-    </div>
+  <div class="hero-black-ov" style="background:rgba(0,0,0,0.20);"></div>
+  <div class="hero-ov-l"></div>
+  <div class="hero-side hero-side-o"></div>
+  <div class="hero-wrap">
+    <div class="hero-hdr"><span class="label label-orange">Koncept 02</span><span class="bc">DELIKOMAT / PERFECT BREAK</span></div>
     <div class="hero-body">
       <div class="hero-lbl label-orange">Koncept 02</div>
       <div class="hero-title">DELIKOMAN<br>NA LEHÁTKU</div>
@@ -464,9 +315,7 @@ h1.huge { font-size: clamp(38px, 6vw, 88px); font-weight: 900; text-transform: u
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     S9 — KONCEPT 02 DETAIL
-══════════════════════════════════════ -->
+<!-- S9 — KONCEPT 02 DETAIL -->
 <div class="slide" id="s9">
   <div class="bar bar-orange"></div>
   <div class="hdr"><span class="label label-orange">Koncept 02</span><span class="bc">DELIKOMAT / PERFECT BREAK</span></div>
@@ -474,18 +323,9 @@ h1.huge { font-size: clamp(38px, 6vw, 88px); font-weight: 900; text-transform: u
     <h1>Humor vzniká z kontrastu: zákazník vybírá,<br>Delikoman už má pauzu.</h1>
     <div class="s9lay">
       <div class="points">
-        <div class="pt">
-          <div class="pnum pnum-orange">01</div>
-          <div><div class="ptitle">Přilákání</div><div class="ptext">Delikoman relaxuje na lehátku na místě, kde by ho nikdo nečekal.</div></div>
-        </div>
-        <div class="pt">
-          <div class="pnum pnum-orange">02</div>
-          <div><div class="ptitle">Reakce</div><div class="ptext">Pohledem, gestem nebo komentářem reaguje na typické chování lidí u automatu.</div></div>
-        </div>
-        <div class="pt">
-          <div class="pnum pnum-orange">03</div>
-          <div><div class="ptitle">Perfect Break</div><div class="ptext">Jednoduchá pointa převádí absurdní situaci do značkového sdělení o pauze.</div></div>
-        </div>
+        <div class="pt"><div class="pnum pnum-orange">01</div><div><div class="ptitle">Přilákání</div><div class="ptext">Delikoman relaxuje na lehátku na místě, kde by ho nikdo nečekal.</div></div></div>
+        <div class="pt"><div class="pnum pnum-orange">02</div><div><div class="ptitle">Reakce</div><div class="ptext">Pohledem, gestem nebo komentářem reaguje na typické chování lidí u automatu.</div></div></div>
+        <div class="pt"><div class="pnum pnum-orange">03</div><div><div class="ptitle">Perfect Break</div><div class="ptext">Jednoduchá pointa převádí absurdní situaci do značkového sdělení o pauze.</div></div></div>
       </div>
       <div class="qbox">
         <div class="qmain">„CO TO KRUCI JE?"</div>
@@ -496,64 +336,48 @@ h1.huge { font-size: clamp(38px, 6vw, 88px); font-weight: 900; text-transform: u
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     S10 — KONCEPT 02 UKÁZKY
-══════════════════════════════════════ -->
+<!-- S10 — KONCEPT 02 UKÁZKY -->
 <div class="slide" id="s10">
   <div class="bar bar-orange"></div>
   <div class="hdr"><span class="label label-orange">Koncept 02</span><span class="bc">DELIKOMAT / PERFECT BREAK</span></div>
   <div class="body">
     <h1>Každá situace funguje samostatně. Dohromady budují charakter Delikomana.</h1>
     <div class="bigimgs">
-      <div class="biwrap">
-        <img src="assets/D-549.jpg" alt="Statická ukázka 1">
-        <div class="bilabel">STATICKÁ UKÁZKA 1</div>
-      </div>
-      <div class="biwrap">
-        <img src="assets/H-554.png" alt="Statická ukázka 2">
-        <div class="bilabel">STATICKÁ UKÁZKA 2</div>
-      </div>
+      <div class="biwrap"><img src="assets/D-549.jpg" alt="Statická ukázka 1"><div class="bilabel">STATICKÁ UKÁZKA 1</div></div>
+      <div class="biwrap"><img src="assets/H-554.png" alt="Statická ukázka 2"><div class="bilabel">STATICKÁ UKÁZKA 2</div></div>
     </div>
     <div class="bnote">Výrazná mimika a jasná pointa umožňují koncept dlouhodobě obměňovat bez ztráty rozpoznatelnosti.</div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     S11 — VIDEO UVOD (Delikoman)
-══════════════════════════════════════ -->
-<div class="slide vslide" id="s11" style="align-items:center;justify-content:center;">
+<!-- S11 — VIDEO UVOD — střed -->
+<div class="slide vslide" id="s11">
   <div class="vbar bar-orange"></div>
-  <div class="vwrap vborder-orange" style="position:relative;left:50%;transform:translateX(-50%);">
+  <div class="vwrap vborder-orange">
     <video muted loop playsinline>
       <source src="assets/UVOD_kopie.mp4" type="video/mp4">
     </video>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     S12 — VIDEO Delikoman (kopie)
-══════════════════════════════════════ -->
-<div class="slide vslide" id="s12" style="align-items:center;justify-content:center;">
+<!-- S12 — VIDEO Delikoman_kopie — střed -->
+<div class="slide vslide" id="s12">
   <div class="vbar bar-orange"></div>
-  <div class="vwrap vborder-orange" style="position:relative;left:50%;transform:translateX(-50%);">
+  <div class="vwrap vborder-orange">
     <video muted loop playsinline>
       <source src="assets/Delikoman_kopie.mp4" type="video/mp4">
     </video>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     S13 — KONCEPT 03 HERO (Delikoandroid)
-══════════════════════════════════════ -->
+<!-- S13 — KONCEPT 03 HERO — pozadí deliko_future-500.png -->
 <div class="slide" id="s13">
   <div class="hero-bg" style="background-image:url('assets/deliko_future-500.png')"></div>
+  <div class="hero-black-ov" style="background:rgba(0,0,0,0);"></div>
   <div class="hero-ov-l"></div>
   <div class="hero-side hero-side-c"></div>
   <div class="hero-wrap">
-    <div class="hero-hdr">
-      <span class="label label-cyan">Koncept 03</span>
-      <span class="bc">DELIKOMAT / PERFECT BREAK</span>
-    </div>
+    <div class="hero-hdr"><span class="label label-cyan">Koncept 03</span><span class="bc">DELIKOMAT / PERFECT BREAK</span></div>
     <div class="hero-body">
       <div class="hero-lbl label-cyan">Koncept 03</div>
       <div class="hero-title">DELIKO-<br>ANDROID</div>
@@ -563,9 +387,7 @@ h1.huge { font-size: clamp(38px, 6vw, 88px); font-weight: 900; text-transform: u
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     S14 — KONCEPT 03 DETAIL (5 bodů)
-══════════════════════════════════════ -->
+<!-- S14 — KONCEPT 03 DETAIL -->
 <div class="slide" id="s14">
   <div class="bar bar-cyan"></div>
   <div class="hdr"><span class="label label-cyan">Koncept 03</span><span class="bc">DELIKOMAT / PERFECT BREAK</span></div>
@@ -581,82 +403,50 @@ h1.huge { font-size: clamp(38px, 6vw, 88px); font-weight: 900; text-transform: u
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     S15 — KONCEPT 03 ARGUMENTY
-══════════════════════════════════════ -->
+<!-- S15 — KONCEPT 03 ARGUMENTY -->
 <div class="slide" id="s15">
   <div class="bar bar-cyan"></div>
   <div class="hdr"><span class="label label-cyan">Koncept 03</span><span class="bc">DELIKOMAT / PERFECT BREAK</span></div>
   <div class="body">
     <h1>Virtuální asistent dává automatu tvář — bez závislosti na přesném spuštění.</h1>
     <div class="twocol">
-      <div class="rimg rimg-cyan" style="max-height:380px">
-        <img src="assets/deliko_future-500.png" alt="Delikoandroid">
-      </div>
+      <div class="rimg rimg-cyan" style="max-height:380px"><img src="assets/deliko_future-500.png" alt="Delikoandroid"></div>
       <div class="points">
-        <div class="pt">
-          <div class="pnum pnum-cyan">01</div>
-          <div><div class="ptitle">Přímý kontakt</div><div class="ptext">Pohled do kamery a titulky vytvářejí pocit osobního oslovení.</div></div>
-        </div>
-        <div class="pt">
-          <div class="pnum pnum-cyan">02</div>
-          <div><div class="ptitle">Kontinuální smyčka</div><div class="ptext">Příběh je navržen tak, aby dával smysl bez ohledu na okamžik příchodu zákazníka.</div></div>
-        </div>
-        <div class="pt">
-          <div class="pnum pnum-cyan">03</div>
-          <div><div class="ptitle">Dlouhodobý symbol</div><div class="ptext">Delikoandroid může růst s dalšími tématy, ale stále zůstává známou tváří automatu.</div></div>
-        </div>
+        <div class="pt"><div class="pnum pnum-cyan">01</div><div><div class="ptitle">Přímý kontakt</div><div class="ptext">Pohled do kamery a titulky vytvářejí pocit osobního oslovení.</div></div></div>
+        <div class="pt"><div class="pnum pnum-cyan">02</div><div><div class="ptitle">Kontinuální smyčka</div><div class="ptext">Příběh je navržen tak, aby dával smysl bez ohledu na okamžik příchodu zákazníka.</div></div></div>
+        <div class="pt"><div class="pnum pnum-cyan">03</div><div><div class="ptitle">Dlouhodobý symbol</div><div class="ptext">Delikoandroid může růst s dalšími tématy, ale stále zůstává známou tváří automatu.</div></div></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     S16 — VIDEO DELIKOANDROID
-══════════════════════════════════════ -->
-<div class="slide vslide" id="s16" style="align-items:center;justify-content:center;">
+<!-- S16 — VIDEO DELIKOANDROID — střed -->
+<div class="slide vslide" id="s16">
   <div class="vbar bar-cyan"></div>
-  <div class="vwrap vborder-cyan" style="position:relative;left:50%;transform:translateX(-50%);">
+  <div class="vwrap vborder-cyan">
     <video muted loop playsinline>
       <source src="assets/delikomat_video03_V3-537.mp4" type="video/mp4">
     </video>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     S17 — SHRNUTÍ
-══════════════════════════════════════ -->
+<!-- S17 — SHRNUTÍ -->
 <div class="slide" id="s17">
   <div class="bar bar-orange"></div>
   <div class="hdr"><span class="label label-orange">Shrnutí</span><span class="bc">DELIKOMAT / PERFECT BREAK</span></div>
   <div class="body">
     <h1>Tři cesty. Každá zastaví pozornost jiným způsobem.</h1>
     <div class="sumrows">
-      <div class="sumrow">
-        <div class="sbrand sbrand-g">ARCADE PERFECT BREAK</div>
-        <div class="scol">Nejvýraznější vizuální svět</div>
-        <div class="scol scol2">Generační zásah, energie, série bossů</div>
-      </div>
-      <div class="sumrow">
-        <div class="sbrand sbrand-o">DELIKOMAN NA LEHÁTKU</div>
-        <div class="scol">Nejsilnější okamžitý humor</div>
-        <div class="scol scol2">Jednoduchost, interakce, série gagů</div>
-      </div>
-      <div class="sumrow">
-        <div class="sbrand sbrand-c">DELIKOANDROID</div>
-        <div class="scol">Nejsilnější dlouhodobý ambasador</div>
-        <div class="scol scol2">Osobní kontakt, flexibilní smyčka, budoucnost</div>
-      </div>
+      <div class="sumrow"><div class="sbrand sbrand-g">ARCADE PERFECT BREAK</div><div class="scol">Nejvýraznější vizuální svět</div><div class="scol scol2">Generační zásah, energie, série bossů</div></div>
+      <div class="sumrow"><div class="sbrand sbrand-o">DELIKOMAN NA LEHÁTKU</div><div class="scol">Nejsilnější okamžitý humor</div><div class="scol scol2">Jednoduchost, interakce, série gagů</div></div>
+      <div class="sumrow"><div class="sbrand sbrand-c">DELIKOANDROID</div><div class="scol">Nejsilnější dlouhodobý ambasador</div><div class="scol scol2">Osobní kontakt, flexibilní smyčka, budoucnost</div></div>
     </div>
-    <div class="finbox">
-      Společná pointa: Delikomat promění obyčejné čekání na nápoj v moment, který člověka zastaví, pobaví a dobije.
-    </div>
+    <div class="finbox">Společná pointa: Delikomat promění obyčejné čekání na nápoj v moment, který člověka zastaví, pobaví a dobije.</div>
   </div>
 </div>
 
 </div><!-- /.deck -->
 
-<!-- ── NAV ── -->
 <div class="nav">
   <button class="nav-btn" id="btn-prev" onclick="go(-1)" disabled>&#8592;</button>
   <span class="ctr" id="ctr">01 / 17</span>
@@ -667,31 +457,22 @@ h1.huge { font-size: clamp(38px, 6vw, 88px); font-weight: 900; text-transform: u
 const slides = Array.from(document.querySelectorAll('.slide'));
 const total = slides.length;
 let cur = 0;
-
 function go(d) {
   slides[cur].classList.remove('active');
-  // pause video on leaving
   const vOld = slides[cur].querySelector('video');
   if (vOld) { vOld.pause(); vOld.currentTime = 0; }
-
   cur = Math.max(0, Math.min(total - 1, cur + d));
   slides[cur].classList.add('active');
-
-  // play video on entering
   const vNew = slides[cur].querySelector('video');
   if (vNew) { vNew.play().catch(() => {}); }
-
-  document.getElementById('ctr').textContent =
-    String(cur + 1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
+  document.getElementById('ctr').textContent = String(cur+1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
   document.getElementById('btn-prev').disabled = cur === 0;
   document.getElementById('btn-next').disabled = cur === total - 1;
 }
-
 document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight' || e.key === 'ArrowDown') go(1);
   if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   go(-1);
 });
-
 let tx = 0;
 document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; });
 document.addEventListener('touchend',   e => { const d = e.changedTouches[0].clientX - tx; if (Math.abs(d) > 50) go(d < 0 ? 1 : -1); });
