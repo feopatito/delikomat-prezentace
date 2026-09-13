@@ -113,7 +113,7 @@ h1 { font-size: clamp(26px, 3.2vw, 50px); font-weight: 700; line-height: 1.15; c
 .rimg img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* VIDEO SLIDES — střed garantován */
-.vslide { background: #060504; display: flex !important; flex-direction: column; align-items: center; justify-content: center; }
+.vslide { background: #060504; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 .vwrap { position: relative; width: 82%; max-width: 1080px; border-radius: 10px; overflow: hidden; flex-shrink: 0; }
 .vwrap::before { content: ''; display: block; padding-top: 56.25%; }
 .vwrap video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; background: #000; }
@@ -177,100 +177,126 @@ h1 { font-size: clamp(26px, 3.2vw, 50px); font-weight: 700; line-height: 1.15; c
 ══════════════════════════════════════ */
 @media (max-width: 768px) {
 
-  /* Základní layout — scroll místo fixed slides */
-  html, body { overflow: auto; height: auto; }
-  .deck { position: static; width: 100%; height: auto; }
-  .slide {
-    position: static;
-    opacity: 1 !important;
-    pointer-events: all !important;
-    height: auto;
-    min-height: 100svh;
-    overflow: visible;
-    display: none;
-    flex-direction: column;
-  }
-  .slide.active { display: flex; }
+  /* ── ZÁKLAD: každý slide = jedna celá obrazovka, jen aktivní viditelný ── */
+  html, body { overflow: hidden; height: 100%; }
+  .deck { position: relative; width: 100vw; height: 100vh; }
 
-  /* NAV — větší tlačítka na dotyk */
-  .nav { padding: 10px 20px 16px; }
-  .nav-btn { width: 48px; height: 48px; font-size: 20px; }
+  /* Slide — zůstává absolutně pozicovaný jako na desktopu, jen scrolluje uvnitř */
+  .slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+  .slide.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* ── NAV — větší pro dotyk, průhledné pozadí ── */
+  .nav { padding: 8px 16px 12px; background: rgba(0,0,0,0.5); backdrop-filter: blur(12px); }
+  .nav-btn { width: 52px; height: 52px; font-size: 22px; }
   .ctr { font-size: 13px; }
 
-  /* HEADER + BODY padding */
+  /* ── GLOBÁLNÍ padding ── */
   .hdr { padding: 16px 20px 0; }
-  .body { padding: 20px 20px 80px; overflow: visible; }
+  .body { padding: 16px 20px 100px; overflow: visible; flex: none; }
+  h1 { font-size: clamp(18px, 5.5vw, 28px); margin-bottom: 10px; line-height: 1.2; }
+  .sub { font-size: 13px; }
 
-  /* Nadpisy */
-  h1 { font-size: clamp(20px, 6vw, 32px); margin-bottom: 10px; }
-  .sub { font-size: 14px; }
+  /* ── S1 TITULNÍ ── */
+  #s1 { overflow: hidden; }
+  .s1-bg { position: absolute; inset: 0; }
+  .s1-ov { position: absolute; inset: 0; }
+  .s1-wrap { position: relative; z-index: 2; height: 100%; padding: 0 20px; }
+  .s1-title { font-size: clamp(34px, 11vw, 56px); margin-bottom: 14px; }
+  .s1-sub { font-size: 13px; }
+  .s1-tags { font-size: 9px; letter-spacing: .08em; padding-bottom: 80px; }
+  .dot { margin: 0 5px; }
 
-  /* S1 — titulní */
-  .s1-bg { position: absolute; }
-  .s1-wrap { padding: 0 20px; }
-  .s1-title { font-size: clamp(36px, 12vw, 64px); margin-bottom: 16px; }
-  .s1-sub { font-size: 14px; }
-  .s1-tags { font-size: 10px; letter-spacing: .1em; padding-bottom: 80px; }
-  .dot { margin: 0 6px; }
+  /* ── S2 PŘÍSTUP ── */
+  .cols3 { grid-template-columns: 1fr; gap: 14px; margin: 14px 0; }
+  .bbox { flex-direction: column; gap: 8px; padding: 14px 16px; }
+  .bbox .blabel { white-space: normal; font-size: 13px; }
+  .bbox .btext { font-size: 13px; }
 
-  /* S2 — 3 sloupce → 1 sloupec */
-  .cols3 { grid-template-columns: 1fr; gap: 16px; margin: 16px 0; }
-  .bbox { flex-direction: column; gap: 10px; padding: 16px; }
-  .bbox .blabel { white-space: normal; }
+  /* ── S3 KONCEPTY ── */
+  .ccols { grid-template-columns: 1fr; gap: 16px; margin-top: 14px; flex: none; }
+  .cc .cnum { font-size: 36px; }
+  .cc .cname { font-size: 13px; }
+  .cc .cdesc { font-size: 13px; }
 
-  /* S3 — koncepty → 1 sloupec */
-  .ccols { grid-template-columns: 1fr; gap: 20px; margin-top: 16px; }
-  .cc .cnum { font-size: 40px; }
+  /* ── S4 HERO ARCADE ── */
+  #s4 { overflow: hidden; }
+  .s4-content { padding: 0 20px; height: 100%; }
+  .s4-body { max-width: 100%; padding-bottom: 90px; }
+  .s4-title { font-size: clamp(34px, 10vw, 60px); }
+  .s4-sub { font-size: 13px; }
+  .s4-cta { font-size: 11px; padding: 10px 16px; }
 
-  /* S4 — hero */
-  .s4-content { padding: 0 20px; }
-  .s4-body { max-width: 100%; padding-bottom: 80px; }
-  .s4-title { font-size: clamp(36px, 11vw, 64px); }
-  .s4-sub { font-size: 14px; }
-
-  /* S5 — 4 panely → 2×2 */
-  .frames { grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; flex: none; min-height: 0; }
-  .frame-img { min-height: 120px; }
+  /* ── S5 ČTYŘI PANELY → 2×2 ── */
+  .frames { grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; flex: none; }
+  .frame { min-height: 0; }
+  .frame-img { height: 140px; flex: none; border-radius: 6px; }
+  .frame-img img { height: 100%; }
+  .flabel { font-size: 10px; margin-top: 4px; }
   .ftext { font-size: 11px; }
 
-  /* S6, S15 — twocol → 1 sloupec */
-  .twocol { grid-template-columns: 1fr; gap: 20px; margin-top: 16px; }
-  .rimg { max-height: 220px; height: 220px; }
+  /* ── S6 + S15 TWOCOL → 1 sloupec ── */
+  .twocol { grid-template-columns: 1fr; gap: 18px; margin-top: 14px; flex: none; }
+  .rimg { height: 200px; max-height: 200px; flex: none; }
+  .points { gap: 16px; }
+  .ptitle { font-size: 14px; }
+  .ptext { font-size: 12px; }
 
-  /* S7, S11, S12, S16 — videa */
-  .vwrap { width: 95%; }
-  .vslide { min-height: 50svh; }
+  /* ── S7, S11, S12, S16 VIDEO SLIDY ── */
+  /* Klíčové: vslide nesmí přepisovat display:none na neaktivních! */
+  .slide.vslide { align-items: center; justify-content: center; overflow: hidden; }
+  .vwrap { width: 95%; max-width: none; }
+  .vbar { position: absolute; }
 
-  /* S8, S13 — hero */
-  .hero-wrap { padding: 0 20px; }
-  .hero-body { max-width: 100%; padding-bottom: 80px; }
-  .hero-title { font-size: clamp(34px, 10vw, 60px); }
-  .hero-sub { font-size: 14px; }
+  /* ── S8, S13 HERO DELIKOMAN / ANDROID ── */
+  .hero-bg { position: absolute; inset: 0; }
+  .hero-black-ov { position: absolute; inset: 0; }
+  .hero-ov-l { position: absolute; inset: 0; }
+  .hero-side { position: absolute; }
+  .hero-wrap { position: relative; height: 100%; padding: 0 20px; overflow-y: auto; }
+  .hero-body { max-width: 100%; padding-bottom: 90px; }
+  .hero-title { font-size: clamp(32px, 9vw, 56px); }
+  .hero-sub { font-size: 13px; }
+  .hero-cta { font-size: 11px; padding: 10px 16px; }
 
-  /* S9 — detail */
-  .s9lay { grid-template-columns: 1fr; gap: 16px; margin-top: 14px; }
-  .qbox { padding: 20px; }
-  .qmain { font-size: 22px; }
+  /* ── S9 DETAIL ── */
+  .s9lay { grid-template-columns: 1fr; gap: 14px; margin-top: 12px; flex: none; }
+  .qbox { padding: 18px; }
+  .qmain { font-size: 20px; }
+  .qtext { font-size: 13px; }
 
-  /* S10 — ukázky → 1 sloupec */
-  .bigimgs { grid-template-columns: 1fr; gap: 14px; flex: none; }
-  .biwrap img { min-height: 200px; flex: none; height: 200px; }
+  /* ── S10 UKÁZKY → 1 sloupec ── */
+  .bigimgs { grid-template-columns: 1fr; gap: 12px; flex: none; margin-top: 14px; }
+  .biwrap { min-height: 0; }
+  .biwrap img { height: 220px; flex: none; min-height: 0; }
+  .bnote { font-size: 12px; }
 
-  /* S14 — 5 řádků */
-  .rows5 { margin-top: 12px; }
-  .rtitle { min-width: 130px; font-size: 14px; }
+  /* ── S14 PĚT ŘÁDKŮ ── */
+  .rows5 { flex: none; margin-top: 10px; justify-content: flex-start; gap: 0; }
+  .row5 { gap: 12px; padding: 10px 0; }
+  .rnum { font-size: 17px; min-width: 28px; }
+  .rtitle { min-width: 110px; font-size: 13px; }
   .rdesc { font-size: 12px; }
 
-  /* S17 — shrnutí */
-  .sumrow { grid-template-columns: 1fr; gap: 4px; padding: 14px 0; }
-  .scol { padding: 0; font-size: 13px; }
-  .sbrand { font-size: 13px; margin-bottom: 4px; }
-  .finbox { font-size: 13px; padding: 14px 16px; margin-top: 14px; }
-
-  /* Points */
-  .points { gap: 16px; }
-  .ptitle { font-size: 15px; }
-  .ptext { font-size: 12px; }
+  /* ── S17 SHRNUTÍ ── */
+  .sumrows { flex: none; margin-top: 14px; justify-content: flex-start; }
+  .sumrow { grid-template-columns: 1fr; gap: 2px; padding: 12px 0; }
+  .sbrand { font-size: 12px; margin-bottom: 3px; }
+  .scol { padding: 0; font-size: 12px; }
+  .scol2 { font-size: 11px; }
+  .finbox { font-size: 13px; padding: 12px 16px; margin-top: 12px; }
 }
 </style>
 </head>
