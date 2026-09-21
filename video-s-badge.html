@@ -2,55 +2,55 @@
 <html lang="cs">
 <head>
 <meta charset="UTF-8">
-<title>Delikomat — Perfect Break</title>
+<title>Delikomat — AI Badge</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Anton&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  background: #0a0a0a;
+  background: #080808;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 100vh;
   font-family: 'Inter', sans-serif;
-  gap: 48px;
-  padding: 60px 40px;
+  gap: 40px;
+  padding: 56px 40px 80px;
 }
 
-h1 {
-  color: #333;
-  font-size: 11px;
+.section-label {
+  color: #2e2e2e;
+  font-size: 10px;
   letter-spacing: .2em;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
+  width: 900px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #1a1a1a;
 }
 
-/* ── VARIANTA 1 ── */
+/* ── PLAYER WRAPPER ── */
 .player-wrap {
   position: relative;
   width: 900px;
   border-radius: 14px;
   overflow: hidden;
   background: #000;
-  box-shadow: 0 40px 80px rgba(0,0,0,.8);
+  box-shadow: 0 32px 72px rgba(0,0,0,.85);
 }
-
 .player-wrap video {
   display: block;
   width: 100%;
   height: auto;
 }
 
-/* Badge overlay - sedí přes video dole vlevo */
-.badge-overlay {
+/* ── BADGE OVERLAY — gradient fade ── */
+.overlay {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 32px 20px 16px 16px;
-  background: linear-gradient(to top, rgba(0,0,0,.75) 0%, transparent 100%);
+  bottom: 0; left: 0; right: 0;
+  padding: 48px 18px 14px 14px;
+  background: linear-gradient(to top, rgba(0,0,0,.82) 0%, transparent 100%);
   display: flex;
   align-items: flex-end;
   gap: 10px;
@@ -61,7 +61,7 @@ h1 {
 .ai-icon {
   background: #e8650a;
   border-radius: 6px;
-  padding: 5px 8px 4px;
+  padding: 5px 9px 4px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -77,18 +77,18 @@ h1 {
 }
 .ai-icon .ai {
   font-family: 'Anton', sans-serif;
-  font-size: 18px;
-  color: white;
+  font-size: 20px;
+  color: #fff;
   letter-spacing: .03em;
 }
 
 /* ── DIVIDER ── */
 .divider {
   width: 1px;
-  height: 36px;
+  height: 38px;
   background: rgba(255,255,255,.2);
   flex-shrink: 0;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 
 /* ── TEXT ── */
@@ -103,110 +103,30 @@ h1 {
   font-weight: 800;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.5);
+  color: rgba(255,255,255,.45);
 }
 .badge-text .body {
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 500;
   color: rgba(255,255,255,.82);
   line-height: 1.45;
-  max-width: 620px;
 }
 .badge-text .body em {
   font-style: normal;
   color: #e8a46a;
   font-weight: 600;
 }
-
-/* ── VARIANTA 2: kompaktní pill ── */
-.badge-overlay-v2 {
-  position: absolute;
-  bottom: 16px;
-  left: 16px;
-  display: flex;
-  align-items: stretch;
-  background: rgba(0,0,0,.78);
-  border: 1px solid rgba(255,255,255,.1);
-  border-radius: 8px;
-  overflow: hidden;
-  backdrop-filter: blur(12px);
-  pointer-events: none;
-}
-.v2-icon {
-  background: #e8650a;
-  padding: 8px 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.v2-icon .gen { font-size: 6.5px; font-weight: 800; letter-spacing: .2em; color: rgba(255,255,255,.8); }
-.v2-icon .ai  { font-family: 'Anton', sans-serif; font-size: 16px; color: white; }
-.v2-text {
-  padding: 7px 13px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 2px;
-  max-width: 560px;
-}
-.v2-text .top { font-size: 7.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.4); }
-.v2-text .body { font-size: 10.5px; font-weight: 500; color: rgba(255,255,255,.8); line-height: 1.45; }
-.v2-text .body em { font-style: normal; color: #e8a46a; font-weight: 600; }
-
-/* ── PA STYL ── */
-.badge-overlay-v3 {
-  position: absolute;
-  bottom: 16px;
-  left: 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  pointer-events: none;
-}
-.v3-icon {
-  border: 2px solid rgba(255,255,255,.65);
-  padding: 4px 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  line-height: 1;
-  background: rgba(0,0,0,.7);
-}
-.v3-icon .gen { font-size: 6px; font-weight: 800; letter-spacing: .2em; color: rgba(255,255,255,.55); border-bottom: 1px solid rgba(255,255,255,.25); padding-bottom: 2px; margin-bottom: 2px; width: 100%; text-align: center; font-family: 'Anton',sans-serif; }
-.v3-icon .ai  { font-family: 'Anton', sans-serif; font-size: 16px; color: white; }
-.v3-text {
-  font-size: 9.5px;
-  color: rgba(255,255,255,.65);
-  line-height: 1.5;
-  max-width: 500px;
-  font-style: italic;
-  text-shadow: 0 1px 4px rgba(0,0,0,.9);
-}
-.v3-text em { font-style: normal; color: rgba(255,255,255,.9); font-weight: 600; }
-
-/* ── SECTION LABELS ── */
-.section-label {
-  color: #3a3a3a;
-  font-size: 10px;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  font-weight: 700;
-  width: 900px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #1a1a1a;
-}
 </style>
 </head>
 <body>
 
-<!-- VARIANTA 1: Gradient fade + otevřený badge -->
-<div class="section-label">Varianta 1 — gradient fade, otevřený styl</div>
+<!-- VIDEO 1: Upoutání pozornosti -->
+<div class="section-label">Upoutání pozornosti</div>
 <div class="player-wrap">
   <video controls autoplay muted loop playsinline>
-    <source src="delikoman_video03.mp4" type="video/mp4">
+    <source src="delikoman_video_upoutani.mp4" type="video/mp4">
   </video>
-  <div class="badge-overlay">
+  <div class="overlay">
     <div class="ai-icon">
       <span class="gen">GEN</span>
       <span class="ai">AI</span>
@@ -223,43 +143,25 @@ h1 {
   </div>
 </div>
 
-<!-- VARIANTA 2: Kompaktní dark pill -->
-<div class="section-label">Varianta 2 — kompaktní dark pill</div>
+<!-- VIDEO 2: Příprava kávy epic -->
+<div class="section-label">Příprava kávy — epic adventure</div>
 <div class="player-wrap">
   <video controls muted loop playsinline>
     <source src="delikoman_video03.mp4" type="video/mp4">
   </video>
-  <div class="badge-overlay-v2">
-    <div class="v2-icon">
+  <div class="overlay">
+    <div class="ai-icon">
       <span class="gen">GEN</span>
       <span class="ai">AI</span>
     </div>
-    <div class="v2-text">
-      <div class="top">Video vytvořeno za pomocí AI</div>
+    <div class="divider"></div>
+    <div class="badge-text">
+      <div class="label">Video vytvořeno za pomocí AI</div>
       <div class="body">
-        Při výrobě nebyl zraněn žádný AI model, T-rex ani kůň.
-        Akční scény zajistili <em>AI kaskadéři</em> a <em>vycvičené kosatky</em>.
+        Při tvorbě tohoto videa nebyl zraněn žádný AI model, T-rex ani kůň.
+        Náročné scény byly provedeny za pomocí <em>AI kaskadérů</em>
+        a profesionálně vycvičených <em>kosatek</em>.
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- VARIANTA 3: Parental Advisory styl -->
-<div class="section-label">Varianta 3 — Parental Advisory styl</div>
-<div class="player-wrap">
-  <video controls muted loop playsinline>
-    <source src="delikoman_video03.mp4" type="video/mp4">
-  </video>
-  <div class="badge-overlay-v3">
-    <div class="v3-icon">
-      <span class="gen">AI</span>
-      <span class="ai">GEN</span>
-    </div>
-    <div class="v3-text">
-      <em>Video vytvořeno za pomocí AI.</em>
-      Při tvorbě nebyl zraněn žádný AI model, T-rex ani kůň.
-      Náročné scény byly provedeny za pomocí <em>AI kaskadérů</em>
-      a profesionálně vycvičených <em>kosatek</em>.
     </div>
   </div>
 </div>
